@@ -71,14 +71,6 @@
             height: auto;
             display: block;
         }
-        .hero-banner .hero-gradient {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 180px;
-            background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,.4) 50%, #fff 100%);
-            z-index: 1;
-            pointer-events: none;
-        }
         .hero-banner .hero-overlay {
             position: absolute;
             inset: 0;
@@ -87,6 +79,7 @@
             flex-direction: column;
             justify-content: center;
             padding: 2rem 0;
+            background: linear-gradient(to bottom, transparent 70%, rgba(255,255,255,.6) 85%, #fff 98%);
         }
 
         /* ── Header ── */
@@ -460,7 +453,6 @@
 <!-- ── Hero Banner ── -->
 <div class="hero-banner">
     <div class="cover-img"><img src="封面.jpeg" alt=""></div>
-    <div class="hero-gradient"></div>
     <div class="hero-overlay">
         <div class="container">
 
