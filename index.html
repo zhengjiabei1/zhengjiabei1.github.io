@@ -56,45 +56,78 @@
         /* ── Container ── */
         .container { max-width: var(--max-w); margin: 0 auto; padding: 2rem 1.8rem 3rem; }
 
+        /* ── Hero Banner ── */
+        .hero-banner {
+            position: relative;
+            overflow: hidden;
+            margin-top: 0;
+            padding-top: .5rem;
+        }
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            inset: -15%;
+            background: url('封面.jpg') center/cover no-repeat;
+            transform: rotate(-90deg);
+            z-index: 0;
+            opacity: .85;
+        }
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 140px;
+            background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,.5) 40%, #fff 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        .hero-banner .container {
+            position: relative;
+            z-index: 2;
+        }
+
         /* ── Header ── */
         .header {
             display: flex;
             align-items: flex-start;
             gap: 1.6rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 0;
             padding-bottom: 2rem;
-            border-bottom: 1px solid #6495ED;
+            border-bottom: none;
         }
-        .avatar {
+        .header .avatar {
             width: 110px;
             height: 110px;
             border-radius: 50%;
             object-fit: cover;
             flex-shrink: 0;
-            background: #f0f0f0;
+            background: rgba(255,255,255,.3);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2.2rem;
             font-weight: 600;
-            color: #999;
+            color: #fff;
             user-select: none;
+            border: 3px solid rgba(255,255,255,.6);
         }
         .header-info { flex: 1; }
         .header-info h1 {
             font-size: 1.7rem;
             font-weight: 650;
-            color: var(--text);
+            color: #fff;
             letter-spacing: .01em;
+            text-shadow: 0 1px 4px rgba(0,0,0,.15);
         }
         .header-info .affil {
             font-size: .92rem;
-            color: var(--text-secondary);
+            color: rgba(255,255,255,.9);
             margin-top: .15rem;
             line-height: 1.5;
+            text-shadow: 0 1px 3px rgba(0,0,0,.1);
         }
         .header-info .affil a {
-            color: var(--link);
+            color: rgba(255,255,255,.9);
             text-decoration: none;
         }
         .header-info .affil a:hover { text-decoration: underline; }
@@ -111,10 +144,11 @@
             align-items: center;
             gap: .25rem;
             font-size: .82rem;
-            color: #6495ED;
+            color: rgba(255,255,255,.9);
             text-decoration: none;
+            text-shadow: 0 1px 3px rgba(0,0,0,.1);
         }
-        .social-icons a:hover { color: #4a7ad4; }
+        .social-icons a:hover { color: #fff; }
 
         /* ── Section ── */
         section { margin-bottom: 2.5rem; }
@@ -375,6 +409,8 @@
     <a href="#interests">Interests</a>
 </nav>
 
+<!-- ── Hero Banner ── -->
+<div class="hero-banner">
 <div class="container">
 
 <!-- ── Header ── -->
@@ -386,16 +422,21 @@
         <p class="affil">Seize every possibility!</p>
         <div class="social-icons">
             <a href="mailto:zheng_jiabei@163.com" title="Email">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6495ED" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
                 zheng_jiabei@163.com
             </a>
             <a href="https://github.com/zhengjiabei1" target="_blank" title="GitHub">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="#6495ED"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="#fff"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
                 github.com/zhengjiabei1
             </a>
         </div>
     </div>
 </div>
+
+</div><!-- /container -->
+</div><!-- /hero-banner -->
+
+<div class="container">
 
 <!-- ══════════ 1. 自我介绍 ══════════ -->
 <section id="about">
@@ -409,7 +450,7 @@
         this new chapter <strong>:)</strong> !
     </p>
     <p class="bio-text" style="margin-top:.5rem;">
-        I enjoy things that are creative, and I'm always excited to connect with
+        I enjoy things that are creative, and I'm always happy to connect with
         like-minded friends <strong>(^ ^)</strong> !
     </p>
 
@@ -432,7 +473,7 @@
     <h2 class="sec-title">Education</h2>
 
     <div class="titem">
-        <div class="tlogo"><img src="港科广.png" alt="HKUST(GZ)"></div>
+        <div class="tlogo"><img src="图标/港科广.png" alt="HKUST(GZ)"></div>
         <div class="tbody">
             <span class="tdate">Fall 2026</span>
             <h3>The Hong Kong University of Science and Technology (Guangzhou)</h3>
@@ -441,7 +482,7 @@
     </div>
 
     <div class="titem">
-        <div class="tlogo"><img src="北京林业大学.png" alt="BFU"></div>
+        <div class="tlogo"><img src="图标/北京林业大学.png" alt="BFU"></div>
         <div class="tbody">
             <span class="tdate">Sep 2022 – Jun 2026</span>
             <h3>Beijing Forestry University (BFU)</h3>
@@ -456,7 +497,7 @@
     <h2 class="sec-title">Experience</h2>
 
     <div class="titem">
-        <div class="tlogo"><img src="AISI.jpeg" alt="AISI"></div>
+        <div class="tlogo"><img src="图标/AISI.jpeg" alt="AISI"></div>
         <div class="tbody">
             <span class="tdate">May 2026 – Present</span>
             <h3>AI for Science Institute (AISI)</h3>
@@ -466,7 +507,7 @@
     </div>
 
     <div class="titem">
-        <div class="tlogo"><img src="数慧时空.png" alt="Data Intelligence"></div>
+        <div class="tlogo"><img src="图标/数慧时空.png" alt="Data Intelligence"></div>
         <div class="tbody">
             <span class="tdate">Jul 2025 – Oct 2025</span>
             <h3>Beijing Data Intelligence Information Technology Co., Ltd</h3>
@@ -476,7 +517,7 @@
     </div>
 
     <div class="titem">
-        <div class="tlogo"><img src="中国科学院.jpg" alt="CAS"></div>
+        <div class="tlogo"><img src="图标/中国科学院.jpg" alt="CAS"></div>
         <div class="tbody">
             <span class="tdate">Feb 2025 – Jul 2025</span>
             <h3>Institute of Geographic Sciences &amp; Natural Resources Research, CAS</h3>
