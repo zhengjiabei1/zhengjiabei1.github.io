@@ -60,15 +60,18 @@
         .hero-banner {
             position: relative;
             margin-top: 0;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
         }
         .hero-banner .cover-img {
-            display: block;
-            width: 100%;
-            line-height: 0;
+            position: absolute;
+            inset: 0;
         }
         .hero-banner .cover-img img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
         .hero-banner .hero-overlay {
@@ -80,6 +83,7 @@
             justify-content: center;
             padding: 2rem 0;
             pointer-events: none;
+            background: linear-gradient(to bottom, transparent 85%, #fff 100%);
         }
         .hero-banner .hero-overlay > * {
             pointer-events: auto;
