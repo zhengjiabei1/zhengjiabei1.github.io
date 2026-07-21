@@ -60,6 +60,7 @@
         .hero-banner {
             position: relative;
             margin-top: 0;
+            margin-bottom: -3rem;
         }
         .hero-banner .cover-img {
             display: block;
@@ -71,14 +72,6 @@
             height: auto;
             display: block;
         }
-        .hero-banner::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, #fff 0%, transparent 15%);
-            z-index: 1;
-            pointer-events: none;
-        }
         .hero-banner .hero-overlay {
             position: absolute;
             inset: 0;
@@ -87,6 +80,13 @@
             flex-direction: column;
             justify-content: center;
             padding: 2rem 0;
+        }
+        .hero-banner + .container {
+            position: relative;
+            z-index: 10;
+            padding-top: 3rem;
+            border-radius: 1rem 1rem 0 0;
+            background: #fff;
         }
 
         /* ── Header ── */
