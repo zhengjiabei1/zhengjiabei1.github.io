@@ -60,19 +60,24 @@
         .hero-banner {
             position: relative;
             margin-top: 0;
-            margin-bottom: -2px;
         }
         .hero-banner .cover-img {
             display: block;
             width: 100%;
             line-height: 0;
-            mask-image: linear-gradient(to top, transparent 0%, #000 12%, #000 100%);
-            -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 12%, #000 100%);
         }
         .hero-banner .cover-img img {
             width: 100%;
             height: auto;
             display: block;
+        }
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, #fff 0%, transparent 15%);
+            z-index: 1;
+            pointer-events: none;
         }
         .hero-banner .hero-overlay {
             position: absolute;
