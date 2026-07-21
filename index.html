@@ -11,7 +11,6 @@
             --text-secondary: #444444;
             --text-muted: #777777;
             --link: #0645ad;
-            --link-visited: #0b0080;
             --border: #e0e0e0;
             --border-light: #eeeeee;
             --max-w: 860px;
@@ -116,7 +115,6 @@
             text-decoration: none;
         }
         .social-icons a:hover { color: #000; }
-        .social-icons a img { width: 16px; height: 16px; }
 
         /* ── Section ── */
         section { margin-bottom: 2.5rem; }
@@ -139,32 +137,30 @@
         }
         .bio-text strong { color: var(--text); }
 
-        .research-section { margin-top: 1rem; }
-        .research-section strong { font-size: .92rem; }
-        .research-list {
+        .research-section { margin-top: 1.2rem; }
+        .research-section h3 {
+            font-size: .92rem;
+            font-weight: 650;
+            color: var(--text);
+            margin-bottom: .4rem;
+        }
+        .research-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .4rem .8rem;
             list-style: none;
-            margin-top: .35rem;
         }
-        .research-list li {
-            font-size: .9rem;
+        .research-grid li {
+            font-size: .88rem;
             color: var(--text-secondary);
-            padding: .15rem 0;
-            line-height: 1.55;
+            padding: .25rem 0;
+            line-height: 1.5;
         }
-        .research-list li::before {
+        .research-grid li::before {
             content: '•';
-            margin-right: .5rem;
+            margin-right: .45rem;
             color: #999;
         }
-        .research-tag {
-            display: inline-block;
-            font-size: .73rem;
-            font-weight: 500;
-            color: var(--link);
-            text-decoration: none;
-            margin-left: .3rem;
-        }
-        .research-tag:hover { text-decoration: underline; }
 
         /* ── Timeline Items ── */
         .titem {
@@ -184,7 +180,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: .7rem;
+            font-size: .68rem;
             font-weight: 600;
             color: #aaa;
             text-align: center;
@@ -248,6 +244,19 @@
             white-space: nowrap;
         }
 
+        /* ── Future-school badge ── */
+        .future-badge {
+            display: inline-block;
+            font-size: .73rem;
+            font-weight: 600;
+            color: #1a6e5c;
+            background: #e6f5f0;
+            padding: .15rem .55rem;
+            border-radius: 3px;
+            margin-left: .4rem;
+            vertical-align: middle;
+        }
+
         /* ── Publication-style cards ── */
         .pub-item {
             display: flex;
@@ -275,71 +284,17 @@
             font-weight: 600;
             color: var(--text);
         }
-        .pub-item .pub-body .pub-authors {
+        .pub-item .pub-body .pub-meta {
             font-size: .82rem;
             color: var(--text-secondary);
-            margin-top: .15rem;
+            margin-top: .1rem;
         }
-        .pub-item .pub-body .pub-authors strong { color: var(--text); }
+        .pub-item .pub-body .pub-meta strong { color: var(--text); }
         .pub-item .pub-body .pub-venue {
             font-size: .8rem;
             color: var(--text-muted);
-            margin-top: .1rem;
+            margin-top: .05rem;
             font-style: italic;
-        }
-        .pub-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: .5rem;
-            margin-top: .3rem;
-        }
-        .pub-links a {
-            font-size: .78rem;
-            color: var(--link);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .pub-links a:hover { text-decoration: underline; }
-
-        /* ── GitHub-style cards ── */
-        .gh-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: .8rem;
-        }
-        .gh-card {
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: .8rem 1rem;
-            transition: border-color .15s;
-        }
-        .gh-card:hover { border-color: #aaa; }
-        .gh-card .gh-name {
-            font-size: .88rem;
-            font-weight: 600;
-            color: var(--link);
-            text-decoration: none;
-        }
-        .gh-card .gh-name:hover { text-decoration: underline; }
-        .gh-card .gh-desc {
-            font-size: .8rem;
-            color: var(--text-secondary);
-            margin-top: .3rem;
-            line-height: 1.5;
-        }
-        .gh-card .gh-meta {
-            display: flex;
-            gap: .8rem;
-            margin-top: .5rem;
-            font-size: .75rem;
-            color: var(--text-muted);
-            align-items: center;
-        }
-        .gh-card .gh-meta .lang-dot {
-            width: 10px; height: 10px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: .2rem;
         }
 
         /* ── Awards list ── */
@@ -347,24 +302,32 @@
         .award-list li {
             font-size: .9rem;
             color: var(--text-secondary);
-            padding: .2rem 0;
+            padding: .35rem 0;
+            border-bottom: 1px solid var(--border-light);
         }
-        .award-list li::before {
-            content: '•';
-            margin-right: .5rem;
-            color: #999;
-        }
+        .award-list li:last-child { border-bottom: none; }
         .award-list li strong { color: var(--text); }
+        .award-list li .award-desc {
+            display: block;
+            font-size: .82rem;
+            color: var(--text-muted);
+            margin-top: .1rem;
+            line-height: 1.5;
+        }
 
         /* ── Interests ── */
         .interest-row {
             display: flex;
             flex-wrap: wrap;
-            gap: .4rem;
+            gap: .5rem;
         }
         .interest-item {
-            font-size: .85rem;
+            font-size: .88rem;
             color: var(--text-secondary);
+            padding: .4rem .9rem;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: #fafafa;
         }
 
         /* ── Footer ── */
@@ -385,10 +348,12 @@
             .social-icons { justify-content: center; }
             .avatar { width: 90px; height: 90px; }
             .header-info h1 { font-size: 1.4rem; }
+            .research-grid { grid-template-columns: 1fr; }
             .titem { flex-direction: column; gap: .5rem; }
             .titem .tbody .tdate { float: none; display: block; margin: 0 0 .2rem; }
-            .gh-grid { grid-template-columns: 1fr; }
             nav a { margin: 0 .35rem; font-size: .8rem; }
+            .pub-item { flex-direction: column; }
+            .pub-item .pub-thumb { width: 100%; height: 60px; }
         }
 
         @media print {
@@ -404,27 +369,26 @@
 <nav>
     <a href="#about">About</a>
     <a href="#education">Education</a>
-    <a href="#experiences">Experiences</a>
-    <a href="#competitions">Competitions</a>
+    <a href="#internships">Internships</a>
+    <a href="#awards">Awards</a>
     <a href="#projects">Projects</a>
-    <a href="#activities">Activities</a>
+    <a href="#interests">Interests</a>
 </nav>
 
 <div class="container">
 
 <!-- ── Header ── -->
 <div class="header">
-    <!-- Replace this div with: <img class="avatar" src="your-photo.jpg" alt="Zheng Jiabei"> -->
+    <!-- Replace with: <img class="avatar" src="your-photo.jpg" alt="Zheng Jiabei"> -->
     <div class="avatar">JZ</div>
     <div class="header-info">
         <h1>Zheng Jiabei</h1>
         <p class="affil">
-            B.Sc. Student, Geographic Information Science<br>
+            B.Sc. Geographic Information Science<br>
             <a href="https://www.bjfu.edu.cn/" target="_blank">Beijing Forestry University</a>, Beijing, China<br>
-            Micro-degree in Artificial Intelligence &amp; Its Applications
+            Incoming MPhil/PhD Student, HKUST(GZ) DCAI, Fall 2026
         </p>
         <div class="social-icons">
-            <!-- Google Scholar icon -->
             <a href="mailto:zheng_jiabei@163.com" title="Email">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
                 Email
@@ -437,40 +401,54 @@
     </div>
 </div>
 
-<!-- ── About ── -->
+<!-- ══════════ 1. 自我介绍 ══════════ -->
 <section id="about">
     <h2 class="sec-title">About</h2>
     <p class="bio-text">
         I am a senior undergraduate student at <strong>Beijing Forestry University</strong>,
         majoring in <strong>Geographic Information Science</strong> with a Micro-degree in
         <strong>Artificial Intelligence and Its Applications</strong> (GPA 88.17/100).
-        My work sits at the intersection of <strong>AI and scientific data</strong> — I build
-        data pipelines that transform raw, heterogeneous scientific data into AI-ready training
-        sets, and develop retrieval-augmented systems for scientific knowledge discovery.
+        I will join <strong>HKUST(GZ)</strong> as a postgraduate student in
+        <strong>Data-Centric AI (DCAI)</strong> in Fall 2026.
     </p>
     <p class="bio-text" style="margin-top:.5rem;">
-        I am currently an intern at the <strong>AI for Science Institute (AISI)</strong>,
-        where I construct multi-modal scientific training corpora, evaluate LLMs on scientific QA
-        benchmarks, and build hybrid vector-database retrieval systems with LangChain. Previously,
-        I processed satellite imagery for wetland vegetation mapping at the Chinese Academy of
-        Sciences, and automated large-scale data pipelines in industry.
+        My work sits at the intersection of <strong>AI and scientific data</strong>. At the
+        <strong>AI for Science Institute (AISI)</strong>, I construct multi-modal scientific training
+        corpora, evaluate LLMs on QA benchmarks, and build hybrid retrieval systems with vector
+        databases and LangChain. Previously, I processed satellite imagery for wetland vegetation
+        mapping at the <strong>Chinese Academy of Sciences</strong> and automated large-scale
+        data pipelines in industry. I enjoy working on end-to-end ML projects — from messy
+        real-world data to deployed, interpretable models.
     </p>
 
     <!-- Research Interests -->
     <div class="research-section">
-        <strong>Research Interests</strong>
-        <ul class="research-list">
-            <li><strong>AI for Science</strong> — LLM evaluation, scientific knowledge discovery, training data curation</li>
+        <h3>Research Interests</h3>
+        <ul class="research-grid">
+            <li><strong>AI for Science</strong> — LLM evaluation &amp; scientific knowledge discovery</li>
+            <li><strong>Data-Centric AI</strong> — Training data curation, quality assessment, denoising</li>
+            <li><strong>Retrieval-Augmented Generation</strong> — Hybrid retrieval, vector databases, LangChain</li>
             <li><strong>Spatial Data Analysis</strong> — Remote sensing, vegetation mapping, spatial heterogeneity</li>
-            <li><strong>Machine Learning & Data Engineering</strong> — End-to-end ML pipelines on irregular real-world data</li>
-            <li><strong>Retrieval-Augmented Generation</strong> — Hybrid retrieval with vector databases & LangChain</li>
+            <li><strong>Machine Learning</strong> — End-to-end pipelines on irregular real-world data</li>
+            <li><strong>Multi-modal Data</strong> — Scientific literature, satellite imagery, structured datasets</li>
         </ul>
     </div>
 </section>
 
-<!-- ── Education ── -->
+<!-- ══════════ 2. 教育经历 ══════════ -->
 <section id="education">
     <h2 class="sec-title">Education</h2>
+
+    <div class="titem">
+        <div class="tlogo">HKUST<br>(GZ)</div>
+        <div class="tbody">
+            <span class="tdate">Fall 2026 – (upcoming)</span>
+            <h3>The Hong Kong University of Science and Technology (Guangzhou)</h3>
+            <div class="torg">MPhil/PhD, Data-Centric AI (DCAI) <span class="future-badge">Incoming</span></div>
+            <div class="tdesc">Research focus: AI for science, training data engineering, and scientific knowledge discovery.</div>
+        </div>
+    </div>
+
     <div class="titem">
         <div class="tlogo">BFU</div>
         <div class="tbody">
@@ -485,9 +463,9 @@
     </div>
 </section>
 
-<!-- ── Experiences ── -->
-<section id="experiences">
-    <h2 class="sec-title">Experiences</h2>
+<!-- ══════════ 3. 实习经历 ══════════ -->
+<section id="internships">
+    <h2 class="sec-title">Internships</h2>
 
     <div class="titem">
         <div class="tlogo">AISI</div>
@@ -497,7 +475,7 @@
             <div class="torg">Intern, Science Navigator &nbsp;|&nbsp; Beijing, China</div>
             <ul class="tbullets">
                 <li>Built pipelines to transform large-scale scientific literature into AI-ready training data with standardized cleaning, denoising, and quality assessment.</li>
-                <li>Evaluated multiple LLMs on scientific QA benchmarks; analyzed failure patterns such as hallucination and reasoning gaps to identify weaknesses in training data.</li>
+                <li>Evaluated multiple LLMs on scientific QA benchmarks; analyzed failure patterns such as hallucination and reasoning gaps to guide training-data iteration.</li>
                 <li>Developed hybrid retrieval systems using vector databases and LangChain for scientific knowledge discovery.</li>
                 <li>Independently managed full-cycle ML projects with Python and PyTorch on irregular real-world scientific data.</li>
             </ul>
@@ -552,68 +530,58 @@
     </div>
 </section>
 
-<!-- ── Competitions ── -->
-<section id="competitions">
+<!-- ══════════ 4. 奖项 ══════════ -->
+<section id="awards">
     <h2 class="sec-title">Honors &amp; Awards</h2>
 
     <ul class="award-list">
         <li>
-            <strong>Finalist (Top 2%)</strong>, Mathematical Contest in Modeling (MCM), International, Jan 2025
-            <br><span style="font-size:.82rem;">Collected &amp; cleaned 13 years of data on 8 key variables; built multi-objective optimization model solved via genetic algorithm in Python; visualized trade-offs with Matplotlib/Seaborn.</span>
+            <strong>Finalist (Top 2%)</strong> — Mathematical Contest in Modeling (MCM) · International · Jan 2025
+            <span class="award-desc">Collected and cleaned 13 years of data on 8 key variables; built a multi-objective optimization model solved via genetic algorithm in Python; visualized trade-offs with Matplotlib/Seaborn and validated through sensitivity analysis.</span>
         </li>
-        <li style="margin-top:.5rem;">
-            <strong>Second Prize</strong>, China Undergraduate Mathematical Contest in Modeling (CUMCM), Provincial, Sep 2024
-            <br><span style="font-size:.82rem;">Built linear programming model for crop profit maximization; extended with stochastic programming &amp; Monte Carlo simulation for uncertainty.</span>
+        <li>
+            <strong>Second Prize</strong> — China Undergraduate Mathematical Contest in Modeling (CUMCM) · Provincial · Sep 2024
+            <span class="award-desc">Built a linear programming model for crop profit maximization and overstock minimization; extended with stochastic programming and Monte Carlo simulation to incorporate uncertainty.</span>
         </li>
-        <li style="margin-top:.5rem;">
-            <strong>Municipal-Level Innovation Program</strong>, Rice Yield Prediction in Southern China, Jul 2023
+        <li>
+            <strong>Municipal-Level Innovation Program</strong> — Rice Yield Prediction in Southern China · Jul 2023
         </li>
     </ul>
 </section>
 
-<!-- ── Projects ── -->
+<!-- ══════════ 5. 项目经历 ══════════ -->
 <section id="projects">
     <h2 class="sec-title">Projects</h2>
 
     <div class="pub-item">
-        <div class="pub-thumb" style="background:#e8f4f8;color:#4a90a4;font-size:.75rem;font-weight:600;">Risk<br>Prediction</div>
+        <div class="pub-thumb" style="background:#e8f4f8;color:#4a90a4;font-size:.72rem;font-weight:600;">Risk<br>Prediction</div>
         <div class="pub-body">
             <h3>Full-Stack Risk Prediction System</h3>
-            <div class="pub-authors">Mar 2025 – Jul 2025</div>
-            <div class="pub-venue">XGBoost · SHAP · Full-Stack · ML Pipeline</div>
-            <div class="tdesc" style="margin-top:.25rem;">Trained XGBoost on heterogeneous environmental data for pixel-level risk prediction with SHAP interpretability. Built preprocessing pipelines for missing values, spatial heterogeneity, and temporal shifts. Deployed into a production system with automated report generation.</div>
+            <div class="pub-meta">Mar 2025 – Jul 2025</div>
+            <div class="pub-venue">XGBoost · SHAP · ML Pipeline · Full-Stack Deployment</div>
+            <div class="tdesc" style="margin-top:.25rem;">Trained XGBoost on heterogeneous environmental data for pixel-level risk prediction with SHAP interpretability. Built preprocessing pipelines handling missing values, spatial heterogeneity, and temporal shifts. Deployed into a production system with custom scenario inputs and automated report generation.</div>
         </div>
     </div>
 
     <div class="pub-item">
-        <div class="pub-thumb" style="background:#f0f4e8;color:#7a904a;font-size:.75rem;font-weight:600;">Rice<br>Yield</div>
+        <div class="pub-thumb" style="background:#f0f4e8;color:#7a904a;font-size:.72rem;font-weight:600;">Rice<br>Yield</div>
         <div class="pub-body">
             <h3>Rice Yield Prediction Using High-Precision Surface Modeling &amp; AI</h3>
-            <div class="pub-authors">Jul 2023 – Sep 2023 &nbsp;|&nbsp; <strong>Municipal-Level Innovation Program</strong></div>
-            <div class="pub-venue">Random Forest · Spatial Analysis · Moran's I</div>
-            <div class="tdesc" style="margin-top:.25rem;">Applied Random Forest to 15 years of agricultural data to identify key yield factors. Detected significant spatial clustering (Moran's I = 0.226) and regional sensitivity via hotspot analysis.</div>
+            <div class="pub-meta">Jul 2023 – Sep 2023 &nbsp;|&nbsp; <strong>Municipal-Level Innovation Program</strong></div>
+            <div class="pub-venue">Random Forest · Spatial Analysis · Moran's I (0.226) · Hotspot Analysis</div>
+            <div class="tdesc" style="margin-top:.25rem;">Applied Random Forest to 15 years of agricultural data to identify key yield factors. Identified significant spatial clustering of rice yields across regions and revealed regional sensitivity differences through hotspot analysis.</div>
         </div>
     </div>
 </section>
 
-<!-- ── Extracurricular Activities ── -->
-<section id="activities">
-    <h2 class="sec-title">Extracurricular Activities</h2>
-    <ul class="award-list">
-        <li><strong>Vice Director</strong>, External Relations Department, BFU Youth Volunteer Association <span style="color:var(--text-muted);font-size:.82rem;">(Sep 2022 – Dec 2023)</span></li>
-        <li><strong>Student Cadre</strong>, Operations Department, BFU Forestry New Media Center <span style="color:var(--text-muted);font-size:.82rem;">(Sep 2022 – Jul 2023)</span></li>
-    </ul>
-
-    <h2 class="sec-title" style="margin-top:2rem;">Interests</h2>
+<!-- ══════════ 6. 个人兴趣 ══════════ -->
+<section id="interests">
+    <h2 class="sec-title">Interests</h2>
     <div class="interest-row">
         <span class="interest-item">📷 Photography</span>
-        <span class="interest-item"> &nbsp;·&nbsp; </span>
         <span class="interest-item">🏊 Swimming</span>
-        <span class="interest-item"> &nbsp;·&nbsp; </span>
         <span class="interest-item">🎨 Painting</span>
-        <span class="interest-item"> &nbsp;·&nbsp; </span>
         <span class="interest-item">📚 Reading</span>
-        <span class="interest-item"> &nbsp;·&nbsp; </span>
         <span class="interest-item">✍️ Writing</span>
     </div>
 </section>
