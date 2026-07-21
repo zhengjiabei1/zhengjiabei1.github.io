@@ -157,8 +157,12 @@
             line-height: 1.5;
         }
         .research-grid li::before {
-            content: '•';
-            margin-right: .45rem;
+            content: none;
+        }
+        .ri-icon {
+            display: inline-block;
+            margin-right: .15rem;
+            font-size: .7rem;
             color: #999;
         }
 
@@ -419,12 +423,12 @@
     <div class="research-section">
         <h3>Research Interests</h3>
         <ul class="research-grid">
-            <li><strong>AI for Science</strong> — LLM evaluation &amp; scientific knowledge discovery</li>
-            <li><strong>Data-Centric AI</strong> — Training data curation, quality assessment, denoising</li>
-            <li><strong>Retrieval-Augmented Generation</strong> — Hybrid retrieval, vector databases, LangChain</li>
-            <li><strong>Spatial Data Analysis</strong> — Remote sensing, vegetation mapping, spatial heterogeneity</li>
-            <li><strong>Machine Learning</strong> — End-to-end pipelines on irregular real-world data</li>
-            <li><strong>Multi-modal Data</strong> — Scientific literature, satellite imagery, structured datasets</li>
+            <li><span class="ri-icon">▸</span> <strong>AI for Science</strong> — LLM evaluation &amp; scientific knowledge discovery</li>
+            <li><span class="ri-icon">◆</span> <strong>Data-Centric AI</strong> — Training data curation, quality assessment, denoising</li>
+            <li><span class="ri-icon">◇</span> <strong>Retrieval-Augmented Generation</strong> — Hybrid retrieval, vector databases, LangChain</li>
+            <li><span class="ri-icon">▪</span> <strong>Spatial Data Analysis</strong> — Remote sensing, vegetation mapping, spatial heterogeneity</li>
+            <li><span class="ri-icon">▹</span> <strong>Machine Learning</strong> — End-to-end pipelines on irregular real-world data</li>
+            <li><span class="ri-icon">▵</span> <strong>Multi-modal Data</strong> — Scientific literature, satellite imagery, structured datasets</li>
         </ul>
     </div>
 </section>
