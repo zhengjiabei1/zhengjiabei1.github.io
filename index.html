@@ -60,18 +60,19 @@
         .hero-banner {
             position: relative;
             margin-top: 0;
-            padding-top: .5rem;
-            padding-bottom: 10rem;
         }
-        .hero-banner::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('封面.jpeg') center/cover no-repeat;
-            z-index: 0;
+        .hero-banner .cover-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            line-height: 0;
         }
-        .hero-banner::after {
-            content: '';
+        .hero-banner .cover-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .hero-banner .hero-gradient {
             position: absolute;
             bottom: 0; left: 0; right: 0;
             height: 100px;
@@ -79,14 +80,14 @@
             z-index: 1;
             pointer-events: none;
         }
-        .hero-banner .container {
-            position: relative;
+        .hero-banner .hero-overlay {
+            position: absolute;
+            inset: 0;
             z-index: 2;
-        }
-        .hero-banner + .container {
-            position: relative;
-            z-index: 10;
-            margin-top: -4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem 0;
         }
 
         /* ── Header ── */
@@ -459,7 +460,10 @@
 
 <!-- ── Hero Banner ── -->
 <div class="hero-banner">
-<div class="container">
+    <div class="cover-img"><img src="封面.jpeg" alt=""></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-overlay">
+        <div class="container">
 
 <!-- ── Header ── -->
 <div class="header">
@@ -480,7 +484,8 @@
     </div>
 </div>
 
-</div><!-- /container -->
+        </div><!-- /container -->
+    </div><!-- /hero-overlay -->
 </div><!-- /hero-banner -->
 
 <div class="container">
