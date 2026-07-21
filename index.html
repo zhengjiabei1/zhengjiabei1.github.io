@@ -3,196 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zheng Jiabei — Personal Website</title>
+    <title>Zheng Jiabei — Personal Academic Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #fafaf9;
-            --card: #ffffff;
-            --text: #1c1917;
-            --text-secondary: #57534e;
-            --text-muted: #8c8a84;
-            --accent: #2563eb;
-            --accent-light: #eff6ff;
-            --border: #e7e5e4;
-            --tag-bg: #f5f5f4;
-            --tag-text: #44403c;
-            --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
-            --radius: 12px;
-            --radius-sm: 8px;
-            --max-w: 800px;
+            --bg: #fdfdfc;
+            --sidebar-bg: #f8f7f4;
+            --card-bg: #ffffff;
+            --text: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-muted: #7a7a7a;
+            --accent: #1a3a5c;
+            --accent-light: #e8edf2;
+            --accent-hover: #2b5f8e;
+            --border: #e6e4e0;
+            --border-light: #f0eeea;
+            --shadow: 0 1px 2px rgba(0,0,0,.04);
+            --radius: 6px;
+            --sidebar-w: 280px;
+            --content-max-w: 720px;
+            --font-serif: 'Crimson Text', 'Noto Serif SC', 'Times New Roman', Georgia, serif;
+            --font-sans: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            font-family: var(--font-sans);
             background: var(--bg);
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ── Navigation ── */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(250,250,249,.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            padding: 0 1rem;
-        }
-        .nav-inner {
-            max-width: var(--max-w);
-            margin: 0 auto;
+        /* ── Layout ── */
+        .layout {
             display: flex;
-            gap: 1.5rem;
-            overflow-x: auto;
-            scrollbar-width: none;
+            min-height: 100vh;
         }
-        .nav-inner::-webkit-scrollbar { display: none; }
-        .nav-inner a {
-            display: inline-block;
-            padding: .75rem .25rem;
-            font-size: .875rem;
-            font-weight: 500;
+
+        /* ── Sidebar ── */
+        .sidebar {
+            width: var(--sidebar-w);
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            padding: 2.5rem 1.8rem;
+            flex-shrink: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border);
+            background: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto .8rem;
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            user-select: none;
+            /* Replace the initials with a real photo: set this as a background-image instead */
+        }
+
+        .sidebar .name {
+            font-family: var(--font-serif);
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--text);
+            text-align: center;
+            letter-spacing: .01em;
+        }
+
+        .sidebar .affiliation {
+            font-size: .82rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: .2rem;
+            line-height: 1.5;
+        }
+
+        .sidebar .divider {
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            margin: 1.2rem auto;
+            border: none;
+        }
+
+        .sidebar .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: .4rem;
+            font-size: .82rem;
+        }
+        .sidebar .contact-links a,
+        .sidebar .contact-links span {
             color: var(--text-secondary);
             text-decoration: none;
-            border-bottom: 2px solid transparent;
-            white-space: nowrap;
-            transition: color .2s, border-color .2s;
-        }
-        .nav-inner a:hover, .nav-inner a.active { color: var(--accent); border-bottom-color: var(--accent); }
-
-        /* ── Container ── */
-        .container { max-width: var(--max-w); margin: 0 auto; padding: 2rem 1.5rem 4rem; }
-
-        /* ── Hero ── */
-        .hero {
-            text-align: center;
-            padding: 3rem 0 2.5rem;
-        }
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -.02em;
-            color: var(--text);
-        }
-        .hero .subtitle {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            margin-top: .35rem;
-            font-weight: 400;
-        }
-        .hero .contact-row {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: .75rem 1.5rem;
-            margin-top: 1rem;
-            font-size: .875rem;
-            color: var(--text-muted);
-        }
-        .hero .contact-row a { color: var(--accent); text-decoration: none; }
-        .hero .contact-row a:hover { text-decoration: underline; }
-
-        /* ── Sections ── */
-        section { margin-bottom: 2.5rem; }
-
-        .section-title {
-            font-size: 1.35rem;
-            font-weight: 650;
-            letter-spacing: -.01em;
-            margin-bottom: 1rem;
-            padding-bottom: .5rem;
-            border-bottom: 2px solid var(--border);
             display: flex;
             align-items: center;
             gap: .5rem;
+            padding: .25rem 0;
         }
-        .section-title .dot {
-            width: 8px; height: 8px; border-radius: 50%;
-            background: var(--accent);
+        .sidebar .contact-links a:hover { color: var(--accent-hover); }
+        .sidebar .contact-links .icon {
+            width: 18px;
+            text-align: center;
             flex-shrink: 0;
+            font-size: .85rem;
         }
 
-        /* ── Cards ── */
-        .card {
-            background: var(--card);
+        /* ── Research Interests in Sidebar ── */
+        .sidebar .interests-title {
+            font-family: var(--font-serif);
+            font-size: .9rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-top: 1.4rem;
+            margin-bottom: .5rem;
+            letter-spacing: .02em;
+        }
+        .sidebar .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .35rem;
+        }
+        .sidebar .interest-tag {
+            font-size: .72rem;
+            font-weight: 500;
+            padding: .2rem .55rem;
+            border-radius: 3px;
+            background: var(--card-bg);
+            color: var(--accent);
             border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.25rem 1.5rem;
-            box-shadow: var(--shadow);
-            margin-bottom: 1rem;
-            transition: box-shadow .2s;
+            white-space: nowrap;
         }
-        .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04); }
 
-        .card-header {
+        /* ── Sidebar Nav (desktop only) ── */
+        .sidebar nav {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: .15rem;
+        }
+        .sidebar nav a {
+            font-size: .8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: .3rem .5rem;
+            border-radius: 3px;
+            transition: color .15s, background .15s;
+        }
+        .sidebar nav a:hover,
+        .sidebar nav a.active {
+            color: var(--accent);
+            background: var(--accent-light);
+        }
+
+        /* ── Main Content ── */
+        .main {
+            margin-left: var(--sidebar-w);
+            flex: 1;
+            padding: 2.5rem 3rem 4rem;
+            max-width: calc(var(--content-max-w) + 6rem);
+        }
+
+        /* ── Section Titles ── */
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: .4rem;
+            border-bottom: 1px solid var(--border);
+            letter-spacing: .01em;
+        }
+
+        section { margin-bottom: 2.2rem; }
+
+        /* ── About / Bio ── */
+        .bio-text {
+            font-size: .92rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+        .bio-text strong { color: var(--text); }
+
+        /* ── Experience Items (timeline-like) ── */
+        .exp-item {
+            position: relative;
+            padding: 0 0 1.4rem 1.3rem;
+            border-left: 1px solid var(--border-light);
+        }
+        .exp-item:last-child { padding-bottom: 0; }
+        .exp-item::before {
+            content: '';
+            position: absolute;
+            left: -4.5px;
+            top: .45rem;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .exp-item .exp-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: baseline;
             flex-wrap: wrap;
-            gap: .5rem;
-            margin-bottom: .35rem;
+            gap: .3rem;
+            margin-bottom: .15rem;
         }
-        .card-header h3 {
-            font-size: 1.05rem;
+        .exp-item h3 {
+            font-size: 1rem;
             font-weight: 600;
             color: var(--text);
         }
-        .card-header .org {
-            font-size: .9rem;
+        .exp-item .exp-org {
+            font-size: .85rem;
             color: var(--text-secondary);
-            font-weight: 500;
+            font-style: italic;
         }
-        .card-header .meta {
-            text-align: right;
-            font-size: .8rem;
+        .exp-item .exp-date {
+            font-size: .78rem;
             color: var(--text-muted);
-            flex-shrink: 0;
+            white-space: nowrap;
         }
-
-        .card p, .card li {
-            font-size: .9rem;
-            color: var(--text-secondary);
+        .exp-item ul {
+            list-style: none;
             margin-top: .35rem;
         }
-        .card ul {
-            list-style: none;
-            padding: 0;
-            margin-top: .5rem;
-        }
-        .card ul li {
+        .exp-item ul li {
+            font-size: .88rem;
+            color: var(--text-secondary);
+            padding-left: .85rem;
             position: relative;
-            padding-left: 1.1rem;
-            margin-bottom: .3rem;
+            margin-bottom: .2rem;
+            line-height: 1.55;
         }
-        .card ul li::before {
-            content: "▹";
+        .exp-item ul li::before {
+            content: '—';
             position: absolute;
             left: 0;
-            color: var(--accent);
-            font-size: .75rem;
-            top: .15rem;
+            color: var(--text-muted);
+            font-size: .7rem;
+            top: .1rem;
         }
 
         /* ── Tags ── */
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: .4rem;
-            margin-top: .6rem;
+            gap: .35rem;
+            margin-top: .45rem;
         }
         .tag {
-            display: inline-block;
-            background: var(--tag-bg);
-            color: var(--tag-text);
-            font-size: .75rem;
-            padding: .2rem .6rem;
-            border-radius: var(--radius-sm);
+            font-size: .72rem;
             font-weight: 500;
+            padding: .15rem .5rem;
+            border-radius: 3px;
+            background: var(--accent-light);
+            color: var(--accent);
+            white-space: nowrap;
         }
 
         /* ── Education highlight ── */
@@ -200,102 +290,193 @@
             display: flex;
             flex-wrap: wrap;
             gap: .5rem;
-            margin-top: .5rem;
+            margin: .5rem 0;
         }
         .edu-stat {
-            background: var(--accent-light);
-            color: var(--accent);
             font-size: .8rem;
             font-weight: 600;
-            padding: .25rem .65rem;
-            border-radius: var(--radius-sm);
+            padding: .2rem .6rem;
+            border-radius: 3px;
+            background: var(--accent-light);
+            color: var(--accent);
         }
 
-        /* ── Interests ── */
-        .interests-row {
+        /* ── Interests Row ── */
+        .interests-bottom {
             display: flex;
             flex-wrap: wrap;
-            gap: .5rem;
+            gap: .6rem;
         }
-        .interest-item {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: .4rem 1rem;
-            font-size: .875rem;
+        .interest-pill {
+            font-size: .85rem;
             color: var(--text-secondary);
-            box-shadow: var(--shadow);
+            padding: .35rem .8rem;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: var(--card-bg);
         }
 
         /* ── Footer ── */
         footer {
             text-align: center;
-            padding: 2rem 1.5rem;
-            font-size: .8rem;
+            padding: 1.5rem 1rem;
+            font-size: .78rem;
             color: var(--text-muted);
             border-top: 1px solid var(--border);
+            margin-top: 1rem;
+        }
+
+        /* ── Mobile Toggle ── */
+        .mobile-nav-toggle {
+            display: none;
+            position: fixed;
+            top: .7rem;
+            right: .7rem;
+            z-index: 200;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,.15);
         }
 
         /* ── Responsive ── */
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
-            .hero .contact-row { flex-direction: column; align-items: center; gap: .3rem; }
-            .card-header { flex-direction: column; }
-            .card-header .meta { text-align: left; }
+        @media (max-width: 860px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform .25s ease;
+                z-index: 150;
+                width: 260px;
+                padding: 2rem 1.5rem;
+            }
+            .sidebar.open { transform: translateX(0); }
+            .sidebar .avatar { width: 100px; height: 100px; font-size: 2rem; }
+            .sidebar .name { font-size: 1.2rem; }
+
+            .main {
+                margin-left: 0;
+                padding: 1.5rem 1.2rem 3rem;
+            }
+            .mobile-nav-toggle { display: flex; align-items: center; justify-content: center; }
+            .section-title { font-size: 1.15rem; }
+            .exp-item { padding-left: 1rem; }
+            .exp-item .exp-header { flex-direction: column; }
+            .exp-item .exp-date { text-align: left; }
+        }
+
+        @media (max-width: 480px) {
+            .main { padding: 1.2rem .9rem 2.5rem; }
+        }
+
+        /* ── Print ── */
+        @media print {
+            .sidebar { position: static; }
+            .main { margin-left: 0; }
+            .mobile-nav-toggle { display: none; }
         }
     </style>
 </head>
 <body>
+<div class="layout">
 
-<!-- ── Navigation ── -->
-<nav>
-    <div class="nav-inner">
+<!-- ══════════ SIDEBAR ══════════ -->
+<aside class="sidebar" id="sidebar">
+    <!-- Avatar — replace with <img> tag or set background-image to your photo -->
+    <div class="avatar" title="Zheng Jiabei">JZ</div>
+
+    <h1 class="name">Zheng Jiabei</h1>
+    <p class="affiliation">
+        B.Sc. Geographic Information Science<br>
+        Beijing Forestry University<br>
+        Beijing, China
+    </p>
+
+    <hr class="divider">
+
+    <div class="contact-links">
+        <span><span class="icon">📧</span> zheng_jiabei@163.com</span>
+        <span><span class="icon">📱</span> (+86) 19858363314</span>
+        <a href="https://github.com/zhengjiabei1" target="_blank"><span class="icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></span> GitHub</a>
+    </div>
+
+    <!-- Research Interests -->
+    <h2 class="interests-title">Research Interests</h2>
+    <div class="interest-tags">
+        <span class="interest-tag">AI for Science</span>
+        <span class="interest-tag">LLM &amp; RAG</span>
+        <span class="interest-tag">Spatial Data Analysis</span>
+        <span class="interest-tag">Remote Sensing</span>
+        <span class="interest-tag">Machine Learning</span>
+        <span class="interest-tag">Data Engineering</span>
+        <span class="interest-tag">Scientific Knowledge Graphs</span>
+    </div>
+
+    <!-- Desktop nav -->
+    <nav>
         <a href="#about">About</a>
         <a href="#education">Education</a>
         <a href="#experience">Experience</a>
         <a href="#competitions">Competitions</a>
         <a href="#projects">Projects</a>
         <a href="#activities">Activities</a>
-    </div>
-</nav>
+    </nav>
+</aside>
 
-<div class="container">
+<!-- Mobile menu toggle -->
+<button class="mobile-nav-toggle" id="menuToggle" aria-label="Menu">☰</button>
 
-<!-- ── Hero ── -->
-<header class="hero" id="about">
-    <h1>Zheng Jiabei</h1>
-    <p class="subtitle">Geographic Information Science &amp; AI · Builder of Data-to-Insight Pipelines</p>
-    <div class="contact-row">
-        <span>📱 (+86) 19858363314</span>
-        <span><a href="mailto:zheng_jiabei@163.com">✉️ zheng_jiabei@163.com</a></span>
-    </div>
-</header>
+<!-- ══════════ MAIN CONTENT ══════════ -->
+<main class="main">
+
+<!-- ── About ── -->
+<section id="about">
+    <h2 class="section-title">About</h2>
+    <p class="bio-text">
+        I am a senior undergraduate student at <strong>Beijing Forestry University</strong>,
+        majoring in <strong>Geographic Information Science</strong> with a Micro-degree in
+        <strong>Artificial Intelligence &amp; Its Applications</strong> (GPA 88.17/100).
+        My work sits at the intersection of <strong>AI and scientific data</strong> — I build
+        data pipelines that transform raw, heterogeneous scientific data into AI-ready training
+        sets, and develop retrieval-augmented systems for scientific knowledge discovery.
+    </p>
+    <p class="bio-text" style="margin-top:.6rem;">
+        At <strong>AI for Science Institute (AISI)</strong>, I evaluate LLMs on scientific QA
+        benchmarks, construct multi-modal scientific training corpora, and experiment with
+        hybrid vector-database retrieval using LangChain. Previously, I have processed
+        satellite imagery for wetland vegetation mapping at the Chinese Academy of Sciences,
+        and automated large-scale data pipelines in industry. I enjoy working on end-to-end ML
+        projects — from messy real-world data to deployed, interpretable models.
+    </p>
+</section>
 
 <!-- ── Education ── -->
 <section id="education">
-    <h2 class="section-title"><span class="dot"></span> Education</h2>
-    <div class="card">
-        <div class="card-header">
+    <h2 class="section-title">Education</h2>
+    <div class="exp-item">
+        <div class="exp-header">
             <div>
                 <h3>Beijing Forestry University</h3>
-                <span class="org">B.Sc. Geographic Information Science</span>
+                <span class="exp-org">B.Sc. Geographic Information Science</span>
             </div>
-            <div class="meta">September 2022 – June 2026<br>Beijing, China</div>
+            <span class="exp-date">Sep 2022 – Jun 2026</span>
         </div>
         <div class="edu-stats">
-            <span class="edu-stat">📊 Average Score: 88.17 / 100</span>
-            <span class="edu-stat">🤖 Micro-degree: AI & Its Applications</span>
+            <span class="edu-stat">GPA: 88.17 / 100</span>
+            <span class="edu-stat">Micro-degree: AI &amp; Its Applications</span>
         </div>
-        <p style="margin-top:.6rem;"><strong>Relevant Courses:</strong></p>
+        <p style="font-size:.84rem;color:var(--text-secondary);margin-top:.4rem;"><strong>Relevant Courses:</strong></p>
         <div class="tags">
             <span class="tag">Machine Learning</span>
             <span class="tag">Python Programming</span>
             <span class="tag">Introduction to AI</span>
-            <span class="tag">Web App Development</span>
-            <span class="tag">OOP</span>
-            <span class="tag">Multivariate Statistics</span>
+            <span class="tag">Web Application Development</span>
+            <span class="tag">Object-Oriented Programming</span>
+            <span class="tag">Multivariate Statistics A</span>
             <span class="tag">Numerical Methods</span>
-            <span class="tag">Data Structures</span>
+            <span class="tag">Data Structures B</span>
             <span class="tag">Database Applications</span>
             <span class="tag">C Programming</span>
         </div>
@@ -304,22 +485,21 @@
 
 <!-- ── Experience ── -->
 <section id="experience">
-    <h2 class="section-title"><span class="dot"></span> Internships</h2>
+    <h2 class="section-title">Internships</h2>
 
-    <!-- AISI -->
-    <div class="card">
-        <div class="card-header">
+    <div class="exp-item">
+        <div class="exp-header">
             <div>
                 <h3>AI for Science Institute (AISI)</h3>
-                <span class="org">Intern, Science Navigator</span>
+                <span class="exp-org">Intern, Science Navigator</span>
             </div>
-            <div class="meta">May 2026 – Present<br>Beijing, China</div>
+            <span class="exp-date">May 2026 – Present</span>
         </div>
         <ul>
-            <li>Built pipelines transforming large-scale scientific literature into AI-ready training data with standardized cleaning, denoising &amp; quality assessment.</li>
-            <li>Evaluated multiple LLMs on scientific QA benchmarks; analyzed failure patterns (hallucination, reasoning gaps) to guide training-data iteration.</li>
-            <li>Developed hybrid retrieval systems with vector databases &amp; LangChain for scientific knowledge discovery.</li>
-            <li>Managed full-cycle ML projects with Python &amp; PyTorch on irregular real-world scientific data.</li>
+            <li>Built pipelines to transform large-scale scientific literature into AI-ready training data with standardized cleaning, denoising, and quality assessment.</li>
+            <li>Evaluated multiple LLMs on scientific QA benchmarks; analyzed failure patterns (hallucination, reasoning gaps) to identify weaknesses in training data and guide model selection.</li>
+            <li>Developed hybrid retrieval systems using vector databases and LangChain for scientific knowledge discovery.</li>
+            <li>Independently managed full-cycle ML projects with Python and PyTorch on irregular real-world scientific data.</li>
         </ul>
         <div class="tags">
             <span class="tag">LLM Evaluation</span>
@@ -331,18 +511,17 @@
         </div>
     </div>
 
-    <!-- Data Intelligence -->
-    <div class="card">
-        <div class="card-header">
+    <div class="exp-item">
+        <div class="exp-header">
             <div>
                 <h3>Beijing Data Intelligence Information Technology Co., Ltd</h3>
-                <span class="org">Intern, Monitoring &amp; Survey Department</span>
+                <span class="exp-org">Intern, Monitoring &amp; Survey Department</span>
             </div>
-            <div class="meta">July 2025 – October 2025<br>Beijing, China</div>
+            <span class="exp-date">Jul 2025 – Oct 2025</span>
         </div>
         <ul>
-            <li>Streamlined processing of 100+ datasets using FME &amp; SQL, cutting ingestion time by 40%.</li>
-            <li>Designed rule-based SQL checks to ensure cross-dataset consistency.</li>
+            <li>Streamlined processing of 100+ datasets using FME and SQL, cutting ingestion time by 40%.</li>
+            <li>Designed rule-based SQL checks to ensure consistency across large-scale datasets.</li>
         </ul>
         <div class="tags">
             <span class="tag">FME</span>
@@ -352,19 +531,18 @@
         </div>
     </div>
 
-    <!-- CAS -->
-    <div class="card">
-        <div class="card-header">
+    <div class="exp-item">
+        <div class="exp-header">
             <div>
                 <h3>Institute of Geographic Sciences, CAS</h3>
-                <span class="org">Intern, Habitat Rehabilitation &amp; Vegetation Restoration</span>
+                <span class="exp-org">Intern, Habitat Rehabilitation &amp; Vegetation Restoration</span>
             </div>
-            <div class="meta">February 2025 – July 2025<br>Beijing, China</div>
+            <span class="exp-date">Feb 2025 – Jul 2025</span>
         </div>
         <ul>
-            <li>Processed satellite imagery for wetland vegetation mapping &amp; land cover classification.</li>
-            <li>Computed vegetation indices &amp; spatial heterogeneity metrics with Python.</li>
-            <li>Built analysis-ready structured datasets from multi-temporal satellite data with missing-value handling.</li>
+            <li>Processed satellite imagery for wetland vegetation mapping and land cover classification.</li>
+            <li>Computed vegetation indices and spatial heterogeneity metrics with Python.</li>
+            <li>Cleaned and standardized multi-temporal satellite data; produced analysis-ready structured datasets.</li>
         </ul>
         <div class="tags">
             <span class="tag">Remote Sensing</span>
@@ -377,65 +555,64 @@
 
 <!-- ── Competitions ── -->
 <section id="competitions">
-    <h2 class="section-title"><span class="dot"></span> Competition Prizes</h2>
+    <h2 class="section-title">Competition Prizes</h2>
 
-    <div class="card">
-        <div class="card-header">
+    <div class="exp-item">
+        <div class="exp-header">
             <div>
                 <h3>Finalist (Top 2%) — MCM 2025</h3>
-                <span class="org">International Mathematical Contest in Modeling</span>
+                <span class="exp-org">Mathematical Contest in Modeling · International</span>
             </div>
-            <div class="meta">January 2025</div>
+            <span class="exp-date">Jan 2025</span>
         </div>
         <ul>
-            <li>Collected &amp; cleaned 13 years of data on 8 key variables; applied linear interpolation &amp; Spearman correlation.</li>
-            <li>Built a multi-objective optimization model with genetic algorithm solving in Python.</li>
-            <li>Visualized trade-offs with Matplotlib/Seaborn; validated via sensitivity analysis.</li>
+            <li>Collected and cleaned 13 years of data on 8 key variables; applied linear interpolation for missing values and Spearman correlation for non-normal indicators.</li>
+            <li>Developed a multi-objective optimization model aggregated into a sustainability index, solved via genetic algorithm in Python.</li>
+            <li>Visualized trade-offs with Matplotlib/Seaborn; validated results through sensitivity analysis.</li>
         </ul>
         <div class="tags">
-            <span class="tag">Optimization</span>
+            <span class="tag">Multi-Objective Optimization</span>
             <span class="tag">Genetic Algorithm</span>
             <span class="tag">Python</span>
-            <span class="tag">Matplotlib</span>
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-header">
+    <div class="exp-item">
+        <div class="exp-header">
             <div>
                 <h3>Second Prize — CUMCM 2024</h3>
-                <span class="org">China Undergraduate Mathematical Contest in Modeling</span>
+                <span class="exp-org">China Undergraduate Mathematical Contest in Modeling · Provincial</span>
             </div>
-            <div class="meta">September 2024</div>
+            <span class="exp-date">Sep 2024</span>
         </div>
         <ul>
-            <li>Built linear programming model for crop profit maximization &amp; overstock minimization.</li>
-            <li>Extended with stochastic programming &amp; Monte Carlo simulation for uncertainty.</li>
-            <li>Analyzed crop substitutability/complementarity via Spearman correlation.</li>
+            <li>Built a linear programming model to maximize profit and minimize overstock for crop planning.</li>
+            <li>Extended the model with stochastic programming to incorporate uncertainty; simulated scenarios via Monte Carlo methods.</li>
+            <li>Analyzed crop substitutability and complementarity via Spearman correlation.</li>
         </ul>
         <div class="tags">
             <span class="tag">Linear Programming</span>
             <span class="tag">Stochastic Modeling</span>
-            <span class="tag">Monte Carlo</span>
+            <span class="tag">Monte Carlo Simulation</span>
         </div>
     </div>
 </section>
 
 <!-- ── Projects ── -->
 <section id="projects">
-    <h2 class="section-title"><span class="dot"></span> Project Experience</h2>
+    <h2 class="section-title">Project Experience</h2>
 
-    <div class="card">
-        <div class="card-header">
+    <div class="exp-item">
+        <div class="exp-header">
             <div>
                 <h3>Full-Stack Risk Prediction System</h3>
             </div>
-            <div class="meta">March 2025 – July 2025</div>
+            <span class="exp-date">Mar 2025 – Jul 2025</span>
         </div>
         <ul>
-            <li>Trained XGBoost on heterogeneous environmental data for pixel-level risk prediction with SHAP interpretability.</li>
-            <li>Built preprocessing pipelines handling missing values, spatial heterogeneity &amp; temporal shifts.</li>
-            <li>Deployed into a production system with custom scenario inputs &amp; automated report generation.</li>
+            <li>Trained an XGBoost model on heterogeneous environmental data for pixel-level risk prediction, using SHAP to interpret feature importance and model decisions.</li>
+            <li>Built preprocessing pipelines handling missing values, spatial heterogeneity, and temporal shifts in multi-source data.</li>
+            <li>Deployed the trained model into a production system with custom scenario inputs and automated report generation.</li>
         </ul>
         <div class="tags">
             <span class="tag">XGBoost</span>
@@ -445,17 +622,18 @@
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-header">
+    <div class="exp-item">
+        <div class="exp-header">
             <div>
                 <h3>Rice Yield Prediction — High-Precision Surface Modeling &amp; AI</h3>
-                <span class="org">Municipal-Level Innovation Program</span>
+                <span class="exp-org">Municipal-Level Innovation Program</span>
             </div>
-            <div class="meta">July 2023 – September 2023</div>
+            <span class="exp-date">Jul 2023 – Sep 2023</span>
         </div>
         <ul>
-            <li>Applied Random Forest to 15 years of agricultural data to identify key yield factors.</li>
-            <li>Detected significant spatial clustering (Moran's I = 0.226) &amp; regional sensitivity via hotspot analysis.</li>
+            <li>Applied Random Forest to 15 years of agricultural data to identify key factors influencing rice yields.</li>
+            <li>Identified significant spatial clustering of rice yields across regions (Moran's I = 0.226).</li>
+            <li>Revealed regional sensitivity differences through hotspot analysis.</li>
         </ul>
         <div class="tags">
             <span class="tag">Random Forest</span>
@@ -468,48 +646,61 @@
 
 <!-- ── Extracurricular ── -->
 <section id="activities">
-    <h2 class="section-title"><span class="dot"></span> Extracurricular Activities</h2>
-    <div class="card">
+    <h2 class="section-title">Extracurricular Activities</h2>
+    <div class="exp-item">
         <ul>
-            <li><strong>Vice Director</strong>, External Relations Department, BFU Youth Volunteer Association <span style="color:var(--text-muted);font-size:.8rem;">(Sep 2022 – Dec 2023)</span></li>
-            <li><strong>Student Cadre</strong>, Operations Department, BFU Forestry New Media Center <span style="color:var(--text-muted);font-size:.8rem;">(Sep 2022 – Jul 2023)</span></li>
+            <li><strong>Vice Director</strong>, External Relations Department, BFU Youth Volunteer Association <span style="color:var(--text-muted);font-size:.78rem;"> (Sep 2022 – Dec 2023)</span></li>
+            <li><strong>Student Cadre</strong>, Operations Department, BFU Forestry New Media Center <span style="color:var(--text-muted);font-size:.78rem;"> (Sep 2022 – Jul 2023)</span></li>
         </ul>
     </div>
 </section>
 
 <!-- ── Interests ── -->
 <section>
-    <h2 class="section-title"><span class="dot"></span> Interests</h2>
-    <div class="interests-row">
-        <span class="interest-item">📷 Photography</span>
-        <span class="interest-item">🏊 Swimming</span>
-        <span class="interest-item">🎨 Painting</span>
-        <span class="interest-item">📚 Reading</span>
-        <span class="interest-item">✍️ Writing</span>
+    <h2 class="section-title">Interests</h2>
+    <div class="interests-bottom">
+        <span class="interest-pill">📷 Photography</span>
+        <span class="interest-pill">🏊 Swimming</span>
+        <span class="interest-pill">🎨 Painting</span>
+        <span class="interest-pill">📚 Reading</span>
+        <span class="interest-pill">✍️ Writing</span>
     </div>
 </section>
 
+</main>
 </div>
 
 <footer>
-    &copy; 2026 Zheng Jiabei &mdash; Built with ❤️
+    &copy; 2026 Zheng Jiabei &nbsp;·&nbsp; Built with care &nbsp;·&nbsp; Last updated July 2026
 </footer>
 
-<!-- ── Scroll-spy for nav ── -->
+<!-- ── Scripts ── -->
 <script>
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-inner a');
-    const hero = document.getElementById('about');
+    // Mobile sidebar toggle
+    const toggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    toggle.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+        toggle.textContent = sidebar.classList.contains('open') ? '✕' : '☰';
+    });
+    // Close sidebar when clicking a nav link (mobile)
+    sidebar.querySelectorAll('nav a').forEach(a => {
+        a.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+            toggle.textContent = '☰';
+        });
+    });
 
+    // Scroll-spy for sidebar nav
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('.sidebar nav a');
     const observer = new IntersectionObserver(entries => {
         let active = null;
         entries.forEach(e => { if (e.isIntersecting) active = e.target.id; });
-        // fallback: if hero is visible, clear nav
         if (active) {
             navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + active));
         }
-    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
-
+    }, { rootMargin: '-15% 0px -75% 0px', threshold: 0 });
     sections.forEach(s => observer.observe(s));
 </script>
 
