@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zheng Jiabei — Personal Website</title>
+    <style>
+        :root {
+            --bg: #fafaf9;
+            --card: #ffffff;
+            --text: #1c1917;
+            --text-secondary: #57534e;
+            --text-muted: #8c8a84;
+            --accent: #2563eb;
+            --accent-light: #eff6ff;
+            --border: #e7e5e4;
+            --tag-bg: #f5f5f4;
+            --tag-text: #44403c;
+            --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --max-w: 800px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Navigation ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250,250,249,.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 1rem;
+        }
+        .nav-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .nav-inner::-webkit-scrollbar { display: none; }
+        .nav-inner a {
+            display: inline-block;
+            padding: .75rem .25rem;
+            font-size: .875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            transition: color .2s, border-color .2s;
+        }
+        .nav-inner a:hover, .nav-inner a.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+        /* ── Container ── */
+        .container { max-width: var(--max-w); margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+        /* ── Hero ── */
+        .hero {
+            text-align: center;
+            padding: 3rem 0 2.5rem;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -.02em;
+            color: var(--text);
+        }
+        .hero .subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-top: .35rem;
+            font-weight: 400;
+        }
+        .hero .contact-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: .75rem 1.5rem;
+            margin-top: 1rem;
+            font-size: .875rem;
+            color: var(--text-muted);
+        }
+        .hero .contact-row a { color: var(--accent); text-decoration: none; }
+        .hero .contact-row a:hover { text-decoration: underline; }
+
+        /* ── Sections ── */
+        section { margin-bottom: 2.5rem; }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 650;
+            letter-spacing: -.01em;
+            margin-bottom: 1rem;
+            padding-bottom: .5rem;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+        .section-title .dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+
+        /* ── Cards ── */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1rem;
+            transition: box-shadow .2s;
+        }
+        .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04); }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin-bottom: .35rem;
+        }
+        .card-header h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .card-header .org {
+            font-size: .9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .card-header .meta {
+            text-align: right;
+            font-size: .8rem;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+
+        .card p, .card li {
+            font-size: .9rem;
+            color: var(--text-secondary);
+            margin-top: .35rem;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: .5rem;
+        }
+        .card ul li {
+            position: relative;
+            padding-left: 1.1rem;
+            margin-bottom: .3rem;
+        }
+        .card ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: .75rem;
+            top: .15rem;
+        }
+
+        /* ── Tags ── */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .4rem;
+            margin-top: .6rem;
+        }
+        .tag {
+            display: inline-block;
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            font-size: .75rem;
+            padding: .2rem .6rem;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+        }
+
+        /* ── Education highlight ── */
+        .edu-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin-top: .5rem;
+        }
+        .edu-stat {
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: .8rem;
+            font-weight: 600;
+            padding: .25rem .65rem;
+            border-radius: var(--radius-sm);
+        }
+
+        /* ── Interests ── */
+        .interests-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+        .interest-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: .4rem 1rem;
+            font-size: .875rem;
+            color: var(--text-secondary);
+            box-shadow: var(--shadow);
+        }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: .8rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero .contact-row { flex-direction: column; align-items: center; gap: .3rem; }
+            .card-header { flex-direction: column; }
+            .card-header .meta { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav>
+    <div class="nav-inner">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#competitions">Competitions</a>
+        <a href="#projects">Projects</a>
+        <a href="#activities">Activities</a>
+    </div>
+</nav>
+
+<div class="container">
+
+<!-- ── Hero ── -->
+<header class="hero" id="about">
+    <h1>Zheng Jiabei</h1>
+    <p class="subtitle">Geographic Information Science &amp; AI · Builder of Data-to-Insight Pipelines</p>
+    <div class="contact-row">
+        <span>📱 (+86) 19858363314</span>
+        <span><a href="mailto:zheng_jiabei@163.com">✉️ zheng_jiabei@163.com</a></span>
+    </div>
+</header>
+
+<!-- ── Education ── -->
+<section id="education">
+    <h2 class="section-title"><span class="dot"></span> Education</h2>
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h3>Beijing Forestry University</h3>
+                <span class="org">B.Sc. Geographic Information Science</span>
+            </div>
+            <div class="meta">September 2022 – June 2026<br>Beijing, China</div>
+        </div>
+        <div class="edu-stats">
+            <span class="edu-stat">📊 Average Score: 88.17 / 100</span>
+            <span class="edu-stat">🤖 Micro-degree: AI & Its Applications</span>
+        </div>
+        <p style="margin-top:.6rem;"><strong>Relevant Courses:</strong></p>
+        <div class="tags">
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Python Programming</span>
+            <span class="tag">Introduction to AI</span>
+            <span class="tag">Web App Development</span>
+            <span class="tag">OOP</span>
+            <span class="tag">Multivariate Statistics</span>
+            <span class="tag">Numerical Methods</span>
+            <span class="tag">Data Structures</span>
+            <span class="tag">Database Applications</span>
+            <span class="tag">C Programming</span>
+        </div>
+    </div>
+</section>
+
+<!-- ── Experience ── -->
+<section id="experience">
+    <h2 class="section-title"><span class="dot"></span> Internships</h2>
+
+    <!-- AISI -->
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h3>AI for Science Institute (AISI)</h3>
+                <span class="org">Intern, Science Navigator</span>
+            </div>
+            <div class="meta">May 2026 – Present<br>Beijing, China</div>
+        </div>
+        <ul>
+            <li>Built pipelines transforming large-scale scientific literature into AI-ready training data with standardized cleaning, denoising &amp; quality assessment.</li>
+            <li>Evaluated multiple LLMs on scientific QA benchmarks; analyzed failure patterns (hallucination, reasoning gaps) to guide training-data iteration.</li>
+            <li>Developed hybrid retrieval systems with vector databases &amp; LangChain for scientific knowledge discovery.</li>
+            <li>Managed full-cycle ML projects with Python &amp; PyTorch on irregular real-world scientific data.</li>
+        </ul>
+        <div class="tags">
+            <span class="tag">LLM Evaluation</span>
+            <span class="tag">RAG</span>
+            <span class="tag">LangChain</span>
+            <span class="tag">Vector DB</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Data Quality</span>
+        </div>
+    </div>
+
+    <!-- Data Intelligence -->
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h3>Beijing Data Intelligence Information Technology Co., Ltd</h3>
+                <span class="org">Intern, Monitoring &amp; Survey Department</span>
+            </div>
+            <div class="meta">July 2025 – October 2025<br>Beijing, China</div>
+        </div>
+        <ul>
+            <li>Streamlined processing of 100+ datasets using FME &amp; SQL, cutting ingestion time by 40%.</li>
+            <li>Designed rule-based SQL checks to ensure cross-dataset consistency.</li>
+        </ul>
+        <div class="tags">
+            <span class="tag">FME</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Data Pipeline</span>
+            <span class="tag">Quality Assurance</span>
+        </div>
+    </div>
+
+    <!-- CAS -->
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h3>Institute of Geographic Sciences, CAS</h3>
+                <span class="org">Intern, Habitat Rehabilitation &amp; Vegetation Restoration</span>
+            </div>
+            <div class="meta">February 2025 – July 2025<br>Beijing, China</div>
+        </div>
+        <ul>
+            <li>Processed satellite imagery for wetland vegetation mapping &amp; land cover classification.</li>
+            <li>Computed vegetation indices &amp; spatial heterogeneity metrics with Python.</li>
+            <li>Built analysis-ready structured datasets from multi-temporal satellite data with missing-value handling.</li>
+        </ul>
+        <div class="tags">
+            <span class="tag">Remote Sensing</span>
+            <span class="tag">Python</span>
+            <span class="tag">Satellite Imagery</span>
+            <span class="tag">Spatial Analysis</span>
+        </div>
+    </div>
+</section>
+
+<!-- ── Competitions ── -->
+<section id="competitions">
+    <h2 class="section-title"><span class="dot"></span> Competition Prizes</h2>
+
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h3>Finalist (Top 2%) — MCM 2025</h3>
+                <span class="org">International Mathematical Contest in Modeling</span>
+            </div>
+            <div class="meta">January 2025</div>
+        </div>
+        <ul>
+            <li>Collected &amp; cleaned 13 years of data on 8 key variables; applied linear interpolation &amp; Spearman correlation.</li>
+            <li>Built a multi-objective optimization model with genetic algorithm solving in Python.</li>
+            <li>Visualized trade-offs with Matplotlib/Seaborn; validated via sensitivity analysis.</li>
+        </ul>
+        <div class="tags">
+            <span class="tag">Optimization</span>
+            <span class="tag">Genetic Algorithm</span>
+            <span class="tag">Python</span>
+            <span class="tag">Matplotlib</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h3>Second Prize — CUMCM 2024</h3>
+                <span class="org">China Undergraduate Mathematical Contest in Modeling</span>
+            </div>
+            <div class="meta">September 2024</div>
+        </div>
+        <ul>
+            <li>Built linear programming model for crop profit maximization &amp; overstock minimization.</li>
+            <li>Extended with stochastic programming &amp; Monte Carlo simulation for uncertainty.</li>
+            <li>Analyzed crop substitutability/complementarity via Spearman correlation.</li>
+        </ul>
+        <div class="tags">
+            <span class="tag">Linear Programming</span>
+            <span class="tag">Stochastic Modeling</span>
+            <span class="tag">Monte Carlo</span>
+        </div>
+    </div>
+</section>
+
+<!-- ── Projects ── -->
+<section id="projects">
+    <h2 class="section-title"><span class="dot"></span> Project Experience</h2>
+
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h3>Full-Stack Risk Prediction System</h3>
+            </div>
+            <div class="meta">March 2025 – July 2025</div>
+        </div>
+        <ul>
+            <li>Trained XGBoost on heterogeneous environmental data for pixel-level risk prediction with SHAP interpretability.</li>
+            <li>Built preprocessing pipelines handling missing values, spatial heterogeneity &amp; temporal shifts.</li>
+            <li>Deployed into a production system with custom scenario inputs &amp; automated report generation.</li>
+        </ul>
+        <div class="tags">
+            <span class="tag">XGBoost</span>
+            <span class="tag">SHAP</span>
+            <span class="tag">Full-Stack</span>
+            <span class="tag">ML Pipeline</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div>
+                <h3>Rice Yield Prediction — High-Precision Surface Modeling &amp; AI</h3>
+                <span class="org">Municipal-Level Innovation Program</span>
+            </div>
+            <div class="meta">July 2023 – September 2023</div>
+        </div>
+        <ul>
+            <li>Applied Random Forest to 15 years of agricultural data to identify key yield factors.</li>
+            <li>Detected significant spatial clustering (Moran's I = 0.226) &amp; regional sensitivity via hotspot analysis.</li>
+        </ul>
+        <div class="tags">
+            <span class="tag">Random Forest</span>
+            <span class="tag">Spatial Analysis</span>
+            <span class="tag">Moran's I</span>
+            <span class="tag">Python</span>
+        </div>
+    </div>
+</section>
+
+<!-- ── Extracurricular ── -->
+<section id="activities">
+    <h2 class="section-title"><span class="dot"></span> Extracurricular Activities</h2>
+    <div class="card">
+        <ul>
+            <li><strong>Vice Director</strong>, External Relations Department, BFU Youth Volunteer Association <span style="color:var(--text-muted);font-size:.8rem;">(Sep 2022 – Dec 2023)</span></li>
+            <li><strong>Student Cadre</strong>, Operations Department, BFU Forestry New Media Center <span style="color:var(--text-muted);font-size:.8rem;">(Sep 2022 – Jul 2023)</span></li>
+        </ul>
+    </div>
+</section>
+
+<!-- ── Interests ── -->
+<section>
+    <h2 class="section-title"><span class="dot"></span> Interests</h2>
+    <div class="interests-row">
+        <span class="interest-item">📷 Photography</span>
+        <span class="interest-item">🏊 Swimming</span>
+        <span class="interest-item">🎨 Painting</span>
+        <span class="interest-item">📚 Reading</span>
+        <span class="interest-item">✍️ Writing</span>
+    </div>
+</section>
+
+</div>
+
+<footer>
+    &copy; 2026 Zheng Jiabei &mdash; Built with ❤️
+</footer>
+
+<!-- ── Scroll-spy for nav ── -->
+<script>
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-inner a');
+    const hero = document.getElementById('about');
+
+    const observer = new IntersectionObserver(entries => {
+        let active = null;
+        entries.forEach(e => { if (e.isIntersecting) active = e.target.id; });
+        // fallback: if hero is visible, clear nav
+        if (active) {
+            navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + active));
+        }
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+    sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
