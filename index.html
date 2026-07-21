@@ -62,27 +62,31 @@
             overflow: hidden;
             margin-top: 0;
             padding-top: .5rem;
+            padding-bottom: 5rem;
         }
         .hero-banner::before {
             content: '';
             position: absolute;
-            inset: -15%;
+            inset: 0;
             background: url('封面.jpg') center/cover no-repeat;
             z-index: 0;
-            opacity: .85;
+            opacity: 1;
         }
         .hero-banner::after {
             content: '';
             position: absolute;
             bottom: 0; left: 0; right: 0;
-            height: 140px;
-            background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,.5) 40%, #fff 100%);
+            height: 240px;
+            background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,.1) 30%, #fff 100%);
             z-index: 1;
             pointer-events: none;
         }
         .hero-banner .container {
             position: relative;
             z-index: 2;
+        }
+        .hero-banner + .container {
+            margin-top: -3rem;
         }
 
         /* ── Header ── */
@@ -480,7 +484,7 @@
 </div><!-- /container -->
 </div><!-- /hero-banner -->
 
-<div class="container">
+<div class="container" style="padding-top:1rem;">
 
 <!-- ══════════ 1. 自我介绍 ══════════ -->
 <section id="about">
