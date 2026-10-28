@@ -4,15 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zheng Jiabei — Personal Homepage</title>
+    <meta name="description" content="Zheng Jiabei — B.Sc. in Geographic Information Science at BFU, incoming DCAI postgraduate at HKUST(GZ). AI for Science, Data-Centric AI, RAG, and spatial data analysis.">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="canonical" href="https://zhengjiabei1.github.io/">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Zheng Jiabei — Personal Homepage">
+    <meta property="og:description" content="AI for Science, Data-Centric AI, RAG, and spatial data analysis.">
+    <meta property="og:url" content="https://zhengjiabei1.github.io/">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" href="头像.jpeg" type="image/jpeg">
     <style>
         :root {
             --bg: #ffffff;
             --text: #222222;
-            --text-secondary: #444444;
-            --text-muted: #777777;
-            --link: #0645ad;
+            --text-secondary: #3d444d;
+            --text-muted: #5f6670;
+            --link: #2f5fbf;
+            --accent: #2f5fbf;
             --border: #e0e0e0;
             --border-light: #eeeeee;
+            --focus: #1b4fa8;
             --max-w: 860px;
         }
 
@@ -27,6 +39,45 @@
             line-height: 1.65;
             -webkit-font-smoothing: antialiased;
             font-size: 15px;
+            overflow-wrap: break-word;
+        }
+
+        img { max-width: 100%; }
+
+        /* ── Accessibility helpers ── */
+        .sr-only {
+            position: absolute;
+            width: 1px; height: 1px;
+            padding: 0; margin: -1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);
+            white-space: nowrap;
+            border: 0;
+        }
+        .skip-link {
+            position: absolute;
+            left: 1rem;
+            top: -4rem;
+            z-index: 300;
+            background: #fff;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: .9rem;
+            padding: .55rem .9rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 14px rgba(0,0,0,.18);
+            text-decoration: none;
+            transition: top .15s ease;
+        }
+        .skip-link:focus { top: .6rem; }
+
+        a:focus-visible,
+        button:focus-visible,
+        [tabindex]:focus-visible {
+            outline: 2px solid var(--focus);
+            outline-offset: 3px;
+            border-radius: 2px;
         }
 
         /* ── Sticky Nav ── */
@@ -34,24 +85,34 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(255,255,255,.92);
+            background: rgba(255,255,255,.94);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border-bottom: 1px solid rgba(100,149,237,.25);
-            text-align: center;
-            padding: .55rem .5rem;
+            border-bottom: 1px solid rgba(100,149,237,.35);
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            gap: 1.2rem;
+            padding: .25rem .6rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
         }
+        nav::-webkit-scrollbar { display: none; }
         nav a {
-            display: inline-block;
-            margin: 0 .6rem;
-            font-size: .85rem;
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 0 .1rem;
+            font-size: .88rem;
             color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
-            padding: .1rem 0;
             transition: color .15s;
+            white-space: nowrap;
         }
-        nav a:hover, nav a.active { color: #6495ED; }
+        nav a:hover, nav a.active { color: var(--accent); }
+        nav a.active { box-shadow: inset 0 -2px 0 var(--accent); }
 
         /* ── Container ── */
         .container { max-width: var(--max-w); margin: 0 auto; padding: 2rem 1.8rem 3rem; }
@@ -60,12 +121,13 @@
         .hero-banner {
             position: relative;
             margin-top: 0;
-            max-height: 55vh;
             overflow: hidden;
         }
         .hero-banner .cover-img img {
             width: 100%;
             height: 55vh;
+            min-height: 340px;
+            max-height: 620px;
             object-fit: cover;
             object-position: 50% 30%;
             display: block;
@@ -79,6 +141,18 @@
             justify-content: center;
             padding: 2rem 0;
             pointer-events: none;
+        }
+        .hero-banner .hero-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: linear-gradient(100deg, rgba(10,26,48,.62) 0%, rgba(10,26,48,.34) 55%, rgba(10,26,48,.12) 100%);
+        }
+        .hero-banner .hero-overlay .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
         }
         .hero-banner .hero-overlay > * {
             pointer-events: auto;
@@ -155,10 +229,10 @@
         .sec-title {
             font-size: 1.15rem;
             font-weight: 650;
-            color: #6495ED;
+            color: var(--accent);
             margin-bottom: .9rem;
             padding-bottom: .35rem;
-            border-bottom: 1px solid #6495ED;
+            border-bottom: 1px solid var(--accent);
             letter-spacing: .01em;
         }
 
@@ -269,10 +343,10 @@
         }
         .tag {
             font-size: .72rem;
-            font-weight: 500;
+            font-weight: 600;
             padding: .12rem .45rem;
             border-radius: 3px;
-            background: #6495ED;
+            background: var(--accent);
             color: #fff;
             white-space: nowrap;
         }
@@ -312,6 +386,7 @@
             color: #bbb;
         }
         .pub-item .pub-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+        .pub-item .pub-thumb img.thumb-art { object-position: center; }
         .pub-item .pub-body h3 {
             font-size: .92rem;
             font-weight: 600;
@@ -329,6 +404,41 @@
             margin-top: .05rem;
             font-style: italic;
         }
+        .pub-item .pub-body .pub-desc {
+            font-size: .86rem;
+            color: var(--text-secondary);
+            margin-top: .3rem;
+            line-height: 1.6;
+        }
+        .pub-item .pub-body .pub-result {
+            font-size: .82rem;
+            color: var(--text-secondary);
+            margin-top: .3rem;
+            line-height: 1.5;
+        }
+        .pub-item .pub-body .pub-result strong { color: var(--text); }
+        .pub-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin-top: .6rem;
+        }
+        .pub-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            min-height: 36px;
+            padding: .25rem .75rem;
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            border: 1px solid rgba(47,95,191,.35);
+            border-radius: 999px;
+            transition: background .15s, border-color .15s;
+        }
+        .pub-links a:hover { background: rgba(47,95,191,.08); border-color: var(--accent); }
+        .pub-links svg { flex-shrink: 0; }
 
         /* ── Awards list ── */
         .award-list { list-style: none; }
@@ -381,7 +491,6 @@
             box-shadow: 0 2px 8px rgba(0,0,0,.08);
             transition: transform .3s ease, box-shadow .3s ease;
             flex-shrink: 0;
-            cursor: pointer;
         }
         .photo-card img {
             width: 100%;
@@ -389,9 +498,11 @@
             object-fit: cover;
             display: block;
         }
-        .photo-card:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 12px 28px rgba(0,0,0,.18);
+        @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+            .photo-card:hover {
+                transform: translateY(-8px) scale(1.03);
+                box-shadow: 0 12px 28px rgba(0,0,0,.18);
+            }
         }
         .photo-card:nth-child(1) { margin-top: 2rem; }
         .photo-card:nth-child(2) { margin-top: .6rem; }
@@ -416,28 +527,42 @@
             padding: 1.8rem 1rem;
             border-top: 1px solid rgba(100,149,237,.25);
         }
-        footer a { color: #6495ED; text-decoration: none; }
+        footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
         footer a:hover { text-decoration: underline; }
 
         /* ── Responsive ── */
         @media (max-width: 650px) {
             .header { flex-direction: column; align-items: center; text-align: center; gap: .6rem; }
             .header-info .affil { text-align: center; }
-            .social-icons { justify-content: center; flex-wrap: wrap; }
-            .social-icons a { font-size: .75rem; }
+            .social-icons { justify-content: center; flex-wrap: wrap; gap: .2rem .8rem; }
+            .social-icons a { font-size: .78rem; min-height: 44px; }
             .avatar { width: 80px; height: 80px; }
             .header-info h1 { font-size: 1.3rem; }
             .header-info .affil { font-size: .82rem; }
             .research-grid { grid-template-columns: 1fr; }
             .titem { flex-direction: column; gap: .5rem; }
             .titem .tbody .tdate { float: none; display: block; margin: 0 0 .2rem; }
-            nav a { margin: 0 .3rem; font-size: .78rem; }
-            nav { padding: .4rem .3rem; }
-            .pub-item { flex-direction: column; }
-            .pub-item .pub-thumb { width: 100%; height: 60px; }
+            nav a { margin: 0; font-size: .82rem; }
+            nav { padding: 0 .9rem; gap: .9rem; justify-content: flex-start; }
+            .pub-item { flex-direction: column; gap: .6rem; }
+            .pub-item .pub-thumb { width: 100%; height: 120px; }
+            .pub-item .pub-thumb img { object-position: top center; }
+            .pub-item .pub-thumb img.thumb-art { object-position: center; }
+            .pub-links a { min-height: 44px; }
+            .hero-banner .cover-img img { height: auto; min-height: 340px; max-height: 440px; }
             .hero-banner .hero-overlay { padding: 1rem 0; }
             .hero-banner .hero-overlay .container { padding: 0 .8rem; }
             .container { padding: 1.5rem .9rem 2rem; }
+            .photo-gallery { gap: .35rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
         }
 
         @media print {
@@ -449,8 +574,10 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to main content</a>
+
 <!-- ── Navigation ── -->
-<nav>
+<nav aria-label="Main navigation">
     <a href="#about">About</a>
     <a href="#education">Education</a>
     <a href="#internships">Experience</a>
@@ -460,14 +587,14 @@
 </nav>
 
 <!-- ── Hero Banner ── -->
-<div class="hero-banner">
-    <div class="cover-img"><img src="封面.jpeg" alt=""></div>
+<header class="hero-banner">
+    <div class="cover-img"><img src="封面.jpeg" alt="" width="1918" height="636" fetchpriority="high" decoding="async"></div>
     <div class="hero-overlay">
         <div class="container">
 
 <!-- ── Header ── -->
 <div class="header">
-    <img class="avatar" src="头像.jpeg" alt="Zheng Jiabei">
+    <img class="avatar" src="头像.jpeg" alt="Portrait of Zheng Jiabei" width="398" height="398">
     <div class="header-info">
         <h1>Zheng Jiabei</h1>
         <p class="affil">Seize every possibility!</p>
@@ -486,8 +613,9 @@
 
         </div><!-- /container -->
     </div><!-- /hero-overlay -->
-</div><!-- /hero-banner -->
+</header>
 
+<main id="main" tabindex="-1">
 <div class="container">
 
 <!-- ══════════ 1. 自我介绍 ══════════ -->
@@ -525,7 +653,7 @@
     <h2 class="sec-title">Education</h2>
 
     <div class="titem">
-        <div class="tlogo"><img src="图标/港科广.png" alt="HKUST(GZ)"></div>
+        <div class="tlogo"><img src="图标/港科广.png" alt="HKUST(GZ)" width="48" height="48" loading="lazy" decoding="async"></div>
         <div class="tbody">
             <span class="tdate">Fall 2026</span>
             <h3>The Hong Kong University of Science and Technology (Guangzhou)</h3>
@@ -534,7 +662,7 @@
     </div>
 
     <div class="titem">
-        <div class="tlogo"><img src="图标/北京林业大学.png" alt="BFU"></div>
+        <div class="tlogo"><img src="图标/北京林业大学.png" alt="BFU" width="48" height="48" loading="lazy" decoding="async"></div>
         <div class="tbody">
             <span class="tdate">Sep 2022 – Jun 2026</span>
             <h3>Beijing Forestry University (BFU)</h3>
@@ -549,7 +677,7 @@
     <h2 class="sec-title">Experience</h2>
 
     <div class="titem">
-        <div class="tlogo"><img src="图标/AISI.jpeg" alt="AISI"></div>
+        <div class="tlogo"><img src="图标/AISI.jpeg" alt="AISI" width="48" height="48" loading="lazy" decoding="async"></div>
         <div class="tbody">
             <span class="tdate">May 2026 – Present</span>
             <h3>AI for Science Institute (AISI)</h3>
@@ -559,7 +687,7 @@
     </div>
 
     <div class="titem">
-        <div class="tlogo"><img src="图标/数慧时空.png" alt="Data Intelligence"></div>
+        <div class="tlogo"><img src="图标/数慧时空.png" alt="Data Intelligence" width="48" height="48" loading="lazy" decoding="async"></div>
         <div class="tbody">
             <span class="tdate">Jul 2025 – Oct 2025</span>
             <h3>Beijing Data Intelligence Information Technology Co., Ltd</h3>
@@ -569,7 +697,7 @@
     </div>
 
     <div class="titem">
-        <div class="tlogo"><img src="图标/中国科学院.jpg" alt="CAS"></div>
+        <div class="tlogo"><img src="图标/中国科学院.jpg" alt="CAS" width="48" height="48" loading="lazy" decoding="async"></div>
         <div class="tbody">
             <span class="tdate">Feb 2025 – Jul 2025</span>
             <h3>Institute of Geographic Sciences &amp; Natural Resources Research, CAS</h3>
@@ -604,16 +732,46 @@
     <h2 class="sec-title">Projects</h2>
 
     <div class="pub-item">
-        <div class="pub-thumb"><img src="图标/risk prediction.png" alt="Risk Prediction"></div>
+        <div class="pub-thumb"><img class="thumb-art" src="图标/skilevo.jpg" alt="SkillEvo concept: skills are selected from memory and written back" width="520" height="340" loading="lazy" decoding="async"></div>
         <div class="pub-body">
-            <h3>Full-Stack Risk Prediction System</h3>
-            <div class="pub-meta">Mar 2025 – Jul 2025</div>
-            <div class="tags"><span class="tag">XGBoost</span><span class="tag">SHAP</span><span class="tag">ML Pipeline</span><span class="tag">Full-Stack</span></div>
+            <h3>SkillEvo — Skill Selection and Memory Module for Spatiotemporal Tasks</h3>
+            <p class="pub-desc">A skill selection and memory module for spatiotemporal tasks: reusable skills are retrieved, selected and carried across steps so an agent can keep context over long task sequences.</p>
+            <div class="tags"><span class="tag">Skill Selection</span><span class="tag">Memory</span><span class="tag">Spatiotemporal</span><span class="tag">LLM Agent</span></div>
         </div>
     </div>
 
     <div class="pub-item">
-        <div class="pub-thumb"><img src="图标/rice yield.png" alt="Rice Yield"></div>
+        <div class="pub-thumb"><img src="图标/shoptrace.jpg" alt="ShopTrace store page with product search and category filters" width="520" height="340" loading="lazy" decoding="async"></div>
+        <div class="pub-body">
+            <h3>ShopTrace — Replayable Shopping Browser Agent</h3>
+            <div class="pub-meta">2026 &nbsp;|&nbsp; <strong>Personal Project</strong></div>
+            <p class="pub-desc">A language model drives a real Chromium page through a small set of DOM tools, one action per turn, and every observation, action, screenshot and result is stored so any run can be replayed step by step.</p>
+            <p class="pub-result"><strong>Results:</strong> 30/30 base tasks passed · 7/8 held-out procurement cases · 256 tests · static replay portal</p>
+            <div class="tags"><span class="tag">Browser Agent</span><span class="tag">LLM</span><span class="tag">Playwright</span><span class="tag">Python</span><span class="tag">SQLite</span></div>
+            <div class="pub-links">
+                <a href="https://github.com/zhengjiabei1/shopping_agent" target="_blank" rel="noopener noreferrer">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    GitHub<span class="sr-only"> (opens in a new tab)</span>
+                </a>
+                <a href="https://zhengjiabei1.github.io/shopping_agent/" target="_blank" rel="noopener noreferrer">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                    Live replay<span class="sr-only"> (opens in a new tab)</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="pub-item">
+        <div class="pub-thumb"><img class="thumb-art" src="图标/unet-water.jpg" alt="U-Net concept: satellite water body tile with predicted mask and U-Net encoder-decoder diagram" width="520" height="340" loading="lazy" decoding="async"></div>
+        <div class="pub-body">
+            <h3>Multimodal Water-Body Semantic Segmentation with U-Net</h3>
+            <p class="pub-desc">Multimodal water-body extraction with a U-Net segmentation network, combining spectral and auxiliary inputs to separate water surfaces from complex backgrounds.</p>
+            <div class="tags"><span class="tag">U-Net</span><span class="tag">Semantic Segmentation</span><span class="tag">Remote Sensing</span><span class="tag">Multimodal</span></div>
+        </div>
+    </div>
+
+    <div class="pub-item">
+        <div class="pub-thumb"><img src="图标/rice yield.png" alt="Rice Yield" width="130" height="85" loading="lazy" decoding="async"></div>
         <div class="pub-body">
             <h3>Rice Yield Prediction Using High-Precision Surface Modeling &amp; AI</h3>
             <div class="pub-meta">Jul 2023 – Sep 2023 &nbsp;|&nbsp; <strong>Municipal-Level Innovation Program</strong></div>
@@ -636,15 +794,16 @@
 
     <!-- Photo Gallery -->
     <div class="photo-gallery">
-        <div class="photo-card"><img src="摄影/1.jpeg" alt="Photography 1"></div>
-        <div class="photo-card"><img src="摄影/2.jpeg" alt="Photography 2"></div>
-        <div class="photo-card"><img src="摄影/3.jpeg" alt="Photography 3"></div>
-        <div class="photo-card"><img src="摄影/4.jpeg" alt="Photography 4"></div>
-        <div class="photo-card"><img src="摄影/5.jpeg" alt="Photography 5"></div>
+        <div class="photo-card"><img src="摄影/1.jpeg" alt="Photography 1" width="1080" height="1620" loading="lazy" decoding="async"></div>
+        <div class="photo-card"><img src="摄影/2.jpeg" alt="Photography 2" width="1080" height="1620" loading="lazy" decoding="async"></div>
+        <div class="photo-card"><img src="摄影/3.jpeg" alt="Photography 3" width="1080" height="1620" loading="lazy" decoding="async"></div>
+        <div class="photo-card"><img src="摄影/4.jpeg" alt="Photography 4" width="1080" height="1620" loading="lazy" decoding="async"></div>
+        <div class="photo-card"><img src="摄影/5.jpeg" alt="Photography 5" width="1080" height="1620" loading="lazy" decoding="async"></div>
     </div>
 </section>
 
 </div>
+</main>
 
 <footer>
     &copy; 2026 Zheng Jiabei &nbsp;·&nbsp;
@@ -655,13 +814,18 @@
 
 <!-- ── Scroll-spy ── -->
 <script>
-    const sections = document.querySelectorAll('section[id]');
+    const sections = document.querySelectorAll('main section[id]');
     const navLinks = document.querySelectorAll('nav a');
     const observer = new IntersectionObserver(entries => {
         let active = null;
         entries.forEach(e => { if (e.isIntersecting) active = e.target.id; });
         if (active) {
-            navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + active));
+            navLinks.forEach(a => {
+                const match = a.getAttribute('href') === '#' + active;
+                a.classList.toggle('active', match);
+                if (match) { a.setAttribute('aria-current', 'location'); }
+                else { a.removeAttribute('aria-current'); }
+            });
         }
     }, { rootMargin: '-15% 0px -75% 0px', threshold: 0 });
     sections.forEach(s => observer.observe(s));
